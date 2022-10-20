@@ -17,9 +17,9 @@ router.get("/", (req, res) => {
 // @desc Create new block (public)
 router.post("/", (req, res) => {
   const newBlock = new Block({
-    title: req.body.title,
-    author: req.body.author,
-    description: req.body.description,
+    height: req.body.height,
+    builder: req.body.builder,
+    twitterURL: req.body.twitterURL,
   });
 
   newBlock.save().then((info) => res.json(info));
@@ -40,9 +40,9 @@ router.post("/update/:id", (req, res) => {
     { _id: req.params.id },
     {
       $set: {
-        title: req.body.title,
-        author: req.body.author,
-        description: req.body.description,
+        height: req.body.height,
+        builder: req.body.builder,
+        twitterURL: req.body.twitterURL,
       },
     },
     { new: true }

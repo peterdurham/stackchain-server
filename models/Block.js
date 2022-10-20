@@ -2,17 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BlockSchema = new Schema({
-  title: {
+  height: {
+    type: Number,
+    required: true,
+  },
+  builder: {
     type: String,
     required: true,
   },
-  author: {
+  twitterURL: {
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
+  proofs: {
+    type: [
+      {
+        amount: Number,
+        miner: String,
+        proofURL: String,
+      },
+    ],
   },
 });
 
