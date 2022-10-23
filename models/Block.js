@@ -6,23 +6,26 @@ const BlockSchema = new Schema({
     type: Number,
     required: true,
   },
+  parent: {
+    type: String,
+  },
   builder: {
     type: String,
     required: true,
   },
   twitterURL: {
     type: String,
-    required: true,
+    // required: true,
   },
   proofs: {
     type: [
       {
         amount: Number,
         miner: String,
-        proofURL: String,
+        twitterURL: String,
       },
     ],
   },
 });
 
-module.exports = Block = mongoose.model("book", BlockSchema);
+module.exports = Block = mongoose.model("block", BlockSchema);

@@ -18,8 +18,10 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const newBlock = new Block({
     height: req.body.height,
+    parent: req.body.parent,
     builder: req.body.builder,
     twitterURL: req.body.twitterURL,
+    proofs: req.body.proofs,
   });
 
   newBlock.save().then((info) => res.json(info));
@@ -41,6 +43,7 @@ router.post("/update/:id", (req, res) => {
     {
       $set: {
         height: req.body.height,
+        parent: req.body.parent,
         builder: req.body.builder,
         twitterURL: req.body.twitterURL,
       },
